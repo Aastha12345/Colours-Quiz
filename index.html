@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learn colours with fun</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href = "index.css" relation = "stylesheet">
+    <style>
+        button{
+            border: 2px solid black;
+            border-radius: 50%;
+            height : 20%;
+            width : 20%;
+        }
+        .leftside
+        {
+            height : 50vh;
+            width : 100%;   
+        }
+
+        @media screen and (min-width: 768px)
+        {
+            .leftside, .rightside
+            {
+                height : 100vh;
+            }
+        }        
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>    
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            //change background color on click of btn class
+            $(".btn").click(function(){
+                $(".picture").css("background-color", this.id);
+            });
+
+            //pick a random colour
+            $(".picture").click(function(){
+                const colours = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "purple", "pink", "silver", "gold", "beige", "brown", "grey", "black", "white"];
+                const randomColour = colours[Math.floor(Math.random() * colours.length)];
+                $("#randomColour").html(randomColour);
+            })
+
+        
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class = "row no-gutters">
+
+        <div class = "col-md-6 no-gutters">
+            <div class = "leftside">
+                <h1> Hello, can you please change the background color to <span id = "randomColour"></span> </h1>
+                <img  class="picture" src="http://pngimg.com/uploads/mario/mario_PNG53.png" style="background-color:green; height:100%; width:100%">
+            </div>
+        </div>
+
+        <div class = "col-md-6 no-gutters">
+            
+            <div class = "rightside">
+                <!--Display colour pallate-->
+                <button class = "btn" id = "red" style = "background-color: Red;"> </button> 
+                <button class = "btn" id = "orange" style = "background-color: Orange;"> </button>
+                <button class = "btn" id = "yellow" style = "background-color: Yellow;"> </button>
+                <button class = "btn" id = "green" style = "background-color: Green;"> </button>
+                <button class = "btn" id = "blue" style = "background-color: Blue;"> </button>
+                <button class = "btn" id = "indigo" style = "background-color: Indigo;"> </button>
+                <button class = "btn" id = "violet" style = "background-color: violet;"> </button>
+                <button class = "btn" id = "purple" style = "background-color: purple;"> </button>
+                <button class = "btn" id = "pink" style = "background-color: pink;"> </button>
+                <button class = "btn" id = "silver" style = "background-color: silver;"> </button>
+                <button class = "btn" id = "gold" style = "background-color: gold;"> </button>
+                <button class = "btn" id = "beige" style = "background-color: beige;"> </button>
+                <button class = "btn" id = "brown" style = "background-color: brown;"> </button>
+                <button class = "btn" id = "grey" style = "background-color: grey;"> </button>
+                <button class = "btn" id = "black" style = "background-color: black;"> </button>
+                <button class = "btn" id = "white" style = "background-color: white;"> </button>
+                
+                <button class = "submit">SUBMIT</button> 
+
+
+            </div>
+
+
+        </div>
+
+    <div>
+</body>
+
+</html>
