@@ -35,13 +35,23 @@
 
         $(document).ready(function(){
 
+            //pick a random image
+            $("#test").click(function(){
+                var imageNames = ["captainAmerica", "chipAndDale", "donaldDuck", "frozen", "goofy", "iceAge", "lionKing", "mario", "minions", "mowgli",
+                                        "nightFury", "penguinsOfMadagascar", "smurf", "snoopy", "spongeBob", "tomAndJerry"];
+
+                var imageName = imageNames[Math.floor(Math.random() * imageNames.length)];
+                var imageName = "./images/" + imageName + ".png";
+                $("#myImage").attr("src", imageName); 
+            })
+
             //change background color on click of btn class
             $(".btn").click(function(){
                 $(".picture").css("background-color", this.id);
             });
 
             //pick a random colour
-            $(".picture").click(function(){
+            $("#test").click(function(){
                 const colours = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "purple", "pink", "silver", "gold", "beige", "brown", "grey", "black", "white"];
                 const randomColour = colours[Math.floor(Math.random() * colours.length)];
                 $("#randomColour").html(randomColour);
@@ -61,14 +71,17 @@
         <div class = "col-md-6 no-gutters">
             <div class = "leftside">
                 <h1> Hello, can you please change the background color to <span id = "randomColour"></span> </h1>
-                <img  class="picture" src="http://pngimg.com/uploads/mario/mario_PNG53.png" style="background-color:green; height:100%; width:100%">
+                <img id = "myImage" class="picture" src="http://pngimg.com/uploads/mario/mario_PNG53.png" style="background-color:green; height:100%; width:100%">
             </div>
         </div>
 
         <div class = "col-md-6 no-gutters">
-            
+
+            <button class = "btn" id = "test"> TEST </button> 
+
             <div class = "rightside">
                 <!--Display colour pallate-->
+
                 <button class = "btn" id = "red" style = "background-color: Red;"> </button> 
                 <button class = "btn" id = "orange" style = "background-color: Orange;"> </button>
                 <button class = "btn" id = "yellow" style = "background-color: Yellow;"> </button>
