@@ -8,11 +8,31 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href = "index.css" relation = "stylesheet">
+
     <style>
         .btn{
             height : 17%;
             width : 20%;
+            padding : 3%;
         }
+
+        .btn {
+            display: inline-block;
+            vertical-align: middle;
+            transform: translateZ(0);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+            backface-visibility: hidden;
+            -moz-osx-font-smoothing: grayscale;
+            transition-duration: 0.3s;
+            transition-property: transform;
+        }
+
+        .btn:hover,
+        .btn:focus,
+        .btn:active {
+            transform: scale(1.1);
+        }
+
 
         .leftside
         {
