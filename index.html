@@ -9,16 +9,27 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href = "index.css" relation = "stylesheet">
     <style>
-        button{
-            border: 2px solid black;
-            border-radius: 50%;
-            height : 20%;
+        .btn{
+            height : 17%;
             width : 20%;
         }
+
         .leftside
         {
-            height : 50vh;
+            padding-left : 5%;
             width : 100%;   
+        }
+
+        .rightside
+        {
+            padding-top : 10%;
+            padding-left : 15%;
+            background-color: bisque;
+        }
+
+        .nextside
+        {
+            padding-top: 40vh;
         }
 
         @media screen and (min-width: 768px)
@@ -36,7 +47,7 @@
         $(document).ready(function(){
 
             //pick a random image
-            $("#test").click(function(){
+            $("#next").click(function(){
                 var imageNames = ["captainAmerica", "chipAndDale", "donaldDuck", "frozen", "goofy", "iceAge", "lionKing", "mario", "minions", "mowgli",
                                         "nightFury", "penguinsOfMadagascar", "smurf", "snoopy", "spongeBob", "tomAndJerry"];
 
@@ -51,8 +62,8 @@
             });
 
             //pick a random colour
-            $("#test").click(function(){
-                const colours = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "purple", "pink", "silver", "gold", "beige", "brown", "grey", "black", "white"];
+            $("#next").click(function(){
+                const colours = ["RED", "ORANGE", "YELLOW", "GREEN", "BLUE", "INDIGO", "VIOLET", "PURPLE", "PINK", "SILVER", "GOLD", "BROWN", "GREY", "BLACK", "WHITE"];
                 const randomColour = colours[Math.floor(Math.random() * colours.length)];
                 $("#randomColour").html(randomColour);
             })
@@ -70,22 +81,19 @@
 
         <div class = "col-md-6 no-gutters">
             <div class = "leftside">
-                <h1> Hello, can you please change the background color to <span id = "randomColour"></span> </h1>
-                <img id = "myImage" class="picture" src="http://pngimg.com/uploads/mario/mario_PNG53.png" style="background-color:green; height:100%; width:100%">
+                <h2 style="font-size : 2.5vw;">&nbsp;&nbsp;&nbsp; Change background color to <span id = "randomColour" style = "color: brown;"></span> </h2>
+                <img id = "myImage" class="picture" src="http://pngimg.com/uploads/mario/mario_PNG53.png" style="background-color:green; height:90%; width:100%">
             </div>
         </div>
 
-        <div class = "col-md-6 no-gutters">
-
-            <button class = "btn" id = "test"> TEST </button> 
-
+        <div class = "col-md-5 no-gutters">
             <div class = "rightside">
                 <!--Display colour pallate-->
-
-                <button class = "btn" id = "red" style = "background-color: Red;"> </button> 
+                <button class = "btn" id = "red" style = "background-color: Red;"> </button>                 
                 <button class = "btn" id = "orange" style = "background-color: Orange;"> </button>
                 <button class = "btn" id = "yellow" style = "background-color: Yellow;"> </button>
                 <button class = "btn" id = "green" style = "background-color: Green;"> </button>
+                <button class = "btn" id = "white" style = "background-color: white;"> </button>
                 <button class = "btn" id = "blue" style = "background-color: Blue;"> </button>
                 <button class = "btn" id = "indigo" style = "background-color: Indigo;"> </button>
                 <button class = "btn" id = "violet" style = "background-color: violet;"> </button>
@@ -93,18 +101,16 @@
                 <button class = "btn" id = "pink" style = "background-color: pink;"> </button>
                 <button class = "btn" id = "silver" style = "background-color: silver;"> </button>
                 <button class = "btn" id = "gold" style = "background-color: gold;"> </button>
-                <button class = "btn" id = "beige" style = "background-color: beige;"> </button>
                 <button class = "btn" id = "brown" style = "background-color: brown;"> </button>
                 <button class = "btn" id = "grey" style = "background-color: grey;"> </button>
                 <button class = "btn" id = "black" style = "background-color: black;"> </button>
-                <button class = "btn" id = "white" style = "background-color: white;"> </button>
-                
-                <button class = "submit">SUBMIT</button> 
-
-
             </div>
+        </div>
 
-
+        <div class = "col-md-1 no-gutters">
+            <div class = "nextside">
+                <button id = "next" style="font-size : 2.5vw;"> -> </button>
+            </div> 
         </div>
 
     <div>
