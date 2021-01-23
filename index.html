@@ -50,6 +50,7 @@
         .nextside
         {
             padding-top: 40vh;
+            padding-left: 15%;
         }
 
         @media screen and (min-width: 768px)
@@ -63,8 +64,72 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>    
     <script type="text/javascript">
+        
 
         $(document).ready(function(){
+
+            var testId = 0;
+            var correct = 0;
+            var incorrect = 0;
+
+            var correctColor;
+            var selectedColor;
+
+            //pick a random colour
+
+            function checkOutcome()
+            {
+                if (testId != 0)
+                {
+                    if (correctColor === selectedColor)
+                    {
+                        $('#temp3').html("correct previous");
+                        correct = correct + 1;
+                    }
+                    else
+                    {
+                        $('#temp3').html("incorrect previous");
+                        incorrect = incorrect + 1;
+                    }
+                }
+                if(testId == 6)
+                {
+                    $('#next').html("submit");
+                }
+                if (testId == 7)
+                {
+                    alert("testId = " + testId);
+                }
+            }
+
+
+            function nextTestCase(){
+                checkOutcome();
+
+                testId = testId + 1;
+                $('#testId').html(testId);
+
+                //reset correctColor and selectedColor
+                correctColor = null;
+                selectedColor = null;
+
+                const colors = ["RED", "ORANGE", "YELLOW", "GREEN", "BLUE", "INDIGO", "VIOLET", "PURPLE", "PINK", "SILVER", "GOLD", "BROWN", "GREY", "BLACK", "WHITE"];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                $("#randomColour").html(randomColor);
+            
+                correctColor = randomColor;
+
+            }
+
+
+            $("#next").click(nextTestCase)
+
+            //change background color on click of btn class
+            $(".btn").click(function(){
+                $(".picture").css("background-color", this.id);
+                selectedColor = this.id;
+            });
+
 
             //pick a random image
             $("#next").click(function(){
@@ -76,17 +141,12 @@
                 $("#myImage").attr("src", imageName); 
             })
 
-            //change background color on click of btn class
-            $(".btn").click(function(){
-                $(".picture").css("background-color", this.id);
-            });
 
-            //pick a random colour
-            $("#next").click(function(){
-                const colours = ["RED", "ORANGE", "YELLOW", "GREEN", "BLUE", "INDIGO", "VIOLET", "PURPLE", "PINK", "SILVER", "GOLD", "BROWN", "GREY", "BLACK", "WHITE"];
-                const randomColour = colours[Math.floor(Math.random() * colours.length)];
-                $("#randomColour").html(randomColour);
-            })
+
+            //alert if someone tries to refresh
+            window.onbeforeunload = function() {
+                return "Data will be lost if you leave the page, are you sure?";
+            };
 
         
         });
@@ -109,28 +169,33 @@
         <div class = "col-md-5 no-gutters">
             <div class = "rightside">
                 <!--Display colour pallate-->
-                <button class = "btn" id = "red" style = "background-color: Red;"> </button>                 
-                <button class = "btn" id = "orange" style = "background-color: Orange;"> </button>
-                <button class = "btn" id = "yellow" style = "background-color: Yellow;"> </button>
-                <button class = "btn" id = "green" style = "background-color: Green;"> </button>
-                <button class = "btn" id = "white" style = "background-color: white;"> </button>
-                <button class = "btn" id = "blue" style = "background-color: Blue;"> </button>
-                <button class = "btn" id = "indigo" style = "background-color: Indigo;"> </button>
-                <button class = "btn" id = "violet" style = "background-color: violet;"> </button>
-                <button class = "btn" id = "purple" style = "background-color: purple;"> </button>
-                <button class = "btn" id = "pink" style = "background-color: pink;"> </button>
-                <button class = "btn" id = "silver" style = "background-color: silver;"> </button>
-                <button class = "btn" id = "gold" style = "background-color: gold;"> </button>
-                <button class = "btn" id = "brown" style = "background-color: brown;"> </button>
-                <button class = "btn" id = "grey" style = "background-color: grey;"> </button>
-                <button class = "btn" id = "black" style = "background-color: black;"> </button>
+                <button class = "btn" id = "RED" style = "background-color: Red;"> </button>                 
+                <button class = "btn" id = "ORANGE" style = "background-color: Orange;"> </button>
+                <button class = "btn" id = "YELLOW" style = "background-color: Yellow;"> </button>
+                <button class = "btn" id = "GREEN" style = "background-color: Green;"> </button>
+                <button class = "btn" id = "WHITE" style = "background-color: white;"> </button>
+                <button class = "btn" id = "BLUE" style = "background-color: Blue;"> </button>
+                <button class = "btn" id = "INDIGO" style = "background-color: Indigo;"> </button>
+                <button class = "btn" id = "VIOLET" style = "background-color: violet;"> </button>
+                <button class = "btn" id = "PURPLE" style = "background-color: purple;"> </button>
+                <button class = "btn" id = "PINK" style = "background-color: pink;"> </button>
+                <button class = "btn" id = "SILVER" style = "background-color: silver;"> </button>
+                <button class = "btn" id = "GOLD" style = "background-color: gold;"> </button>
+                <button class = "btn" id = "BROWN" style = "background-color: brown;"> </button>
+                <button class = "btn" id = "GREY" style = "background-color: grey;"> </button>
+                <button class = "btn" id = "BLACK" style = "background-color: black;"> </button>
             </div>
         </div>
 
         <div class = "col-md-1 no-gutters">
+            <h2 style="font-size : 2.5vw;">&nbsp;&nbsp;<span id = "testId"></span>/7</h2>
             <div class = "nextside">
                 <button id = "next" style="font-size : 2.5vw;"> -> </button>
             </div> 
+        
+            <p id = "temp1"></p>
+            <p id = "temp2"></p>
+            <p id = "temp3"></p>
         </div>
 
     <div>
