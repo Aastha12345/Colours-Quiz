@@ -10,6 +10,10 @@
     <link href = "index.css" relation = "stylesheet">
 
     <style>
+        body{
+            background-color: bisque;
+        }
+
         .btn{
             height : 17%;
             width : 20%;
@@ -38,6 +42,7 @@
         {
             padding-left : 5%;
             width : 100%;   
+            background-color: bisque;
         }
 
         .rightside
@@ -79,6 +84,11 @@
 
             function checkOutcome()
             {
+                if(testId == 0)
+                {
+                    $('#next').html("--->");
+                }
+
                 if (testId != 0)
                 {
                     if (correctColor === selectedColor)
@@ -98,7 +108,8 @@
                 }
                 if (testId == 7)
                 {
-                    alert("testId = " + testId);
+                    alert = "hello reached 7 you are about to be redirected"
+                    window.location.href = "result.html?correct=" + encodeURIComponent(correct);
                 }
             }
 
@@ -139,6 +150,7 @@
                 var imageName = imageNames[Math.floor(Math.random() * imageNames.length)];
                 var imageName = "./images/" + imageName + ".png";
                 $("#myImage").attr("src", imageName); 
+                $("#myImage").css("background-color","#7d869c");
             })
 
 
@@ -162,7 +174,7 @@
         <div class = "col-md-6 no-gutters">
             <div class = "leftside">
                 <h2 style="font-size : 2.5vw;">&nbsp;&nbsp;&nbsp; Change background color to <span id = "randomColour" style = "color: brown;"></span> </h2>
-                <img id = "myImage" class="picture" src="http://pngimg.com/uploads/mario/mario_PNG53.png" style="background-color:green; height:90%; width:100%">
+                <img id = "myImage" class="picture" src="http://pngimg.com/uploads/mario/mario_PNG53.png" style="background-color:#7d869c; height:90%; width:100%">
             </div>
         </div>
 
@@ -190,7 +202,7 @@
         <div class = "col-md-1 no-gutters">
             <h2 style="font-size : 2.5vw;">&nbsp;&nbsp;<span id = "testId"></span>/7</h2>
             <div class = "nextside">
-                <button id = "next" style="font-size : 2.5vw;"> -> </button>
+                <button id = "next" style="font-size : 2.5vw;"> Start </button>
             </div> 
         
             <p id = "temp1"></p>
