@@ -9,8 +9,7 @@
     
     <style>
         body{
-            background-image: url('./images/border1.png');
-            height: 100%;
+            background-color: bisque;
         }
 
 
@@ -24,7 +23,11 @@
 
     </style>
 
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script type="text/javascript">
+
+    $(document).ready(function(){
+        
         function createGraph() {
 
             //get parameters from url
@@ -36,7 +39,7 @@
             correct = url.searchParams.get('correct'); 
             incorrect = 7 - correct;
 
-            document.getElementById("test").innerHTML = correct;
+            document.getElementById("test").innerHTML = correct + " / " + 7;
 
             var chart = new CanvasJS.Chart("chartContainer", {
                 title:{
@@ -56,8 +59,11 @@
             chart.render();
         };
 
-        window.onload = createGraph;
+        createGraph();
+    });
  
+
+
     </script>
 
 
@@ -65,15 +71,20 @@
 </head>
 
 <body>
-    <div>
-        <h1 style = "background-color: brown; text-align: center;">Results</h1>
-        <h2 id = "test" style = "background-color: brown; text-align: center;">Correct : 3 Incorrect : 2</h2>
+    <div class = "col-md-10">
+        <div class = "col-md-2">
+            <button id = "restart" style="font-size : 2.5vw; float: right;"> <a href = "./index.html"> X </a></button>
+        </div>
+        <h1 style="font-size : 3vw; text-align: center;">&nbsp;&nbsp;<u>RESULT</u></h1>
+        <h2 id = "test" style = "text-align: center;"></h2>
+        
+        <div id = "centerPart">
+            <div id="chartContainer" style="height: 100%; width: 100%; border: 5px solid black;"></div>
+        </div>
+    
     </div>
 
-    <div id = "centerPart">
-        <div id="chartContainer" style="height: 100%; width: 100%; border: 5px solid black;"></div>
-    </div>
-    
+
 
 </body>
 
