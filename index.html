@@ -1,226 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>learn colours with fun</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href = "index.css" relation = "stylesheet">
-
-    <style>
-        body{
-            background-color: bisque;
-        }
-
-        .btn{
-            height : 17%;
-            width : 20%;
-            padding : 3%;
-        }
-
-        .btn {
-            display: inline-block;
-            vertical-align: middle;
-            transform: translateZ(0);
-            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-            backface-visibility: hidden;
-            -moz-osx-font-smoothing: grayscale;
-            transition-duration: 0.3s;
-            transition-property: transform;
-        }
-
-        .btn:hover,
-        .btn:focus,
-        .btn:active {
-            transform: scale(1.1);
-        }
-
-        #next
-        {
-            background-color: #4CAF50; /* Green */
-            color: white;
-        }
-
-        #next:hover {
-            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-        }
-
-        .leftside
-        {
-            padding-left : 5%;
-            width : 100%;   
-            background-color: bisque;
-        }
-
-        .rightside
-        {
-            padding-top : 10%;
-            padding-left : 15%;
-            background-color: bisque;
-        }
-
-        .nextside
-        {
-            padding-top: 40vh;
-            padding-left: 15%;
-        }
-
-        @media screen and (min-width: 768px)
-        {
-            .leftside, .rightside
-            {
-                height : 100vh;
-            }
-        }        
-    </style>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>   
-    <script type="text/javascript">
+    <link rel= "stylesheet" type= "text/css" href= "./public/styles/index.css">
         
-
-        $(document).ready(function(){
-
-            var testId = 0;
-            var correct = 0;
-            var incorrect = 0;
-
-            var correctColor;
-            var selectedColor;
-
-            //pick a random image
-            function pickRandomImage(){
-                var imageNames = ["captainAmerica", "chipAndDale", "donaldDuck", "frozen", "goofy", "iceAge", "lionKing", "mario", "minions", "mowgli",
-                                        "nightFury", "penguinsOfMadagascar", "smurf", "snoopy", "spongeBob", "tomAndJerry"];
-
-                var imageName = imageNames[Math.floor(Math.random() * imageNames.length)];
-                var imageName = "./images/" + imageName + ".png";
-                $("#myImage").attr("src", imageName); 
-                $("#myImage").css("background-color","#7d869c");
-            }
-
-
-            function checkOutcome()
-            {                
-                if(testId == 0)
-                {
-                    $('#next').html("---->");
-                }
-
-                if (testId != 0)
-                {
-                    if (correctColor === selectedColor)
-                    {
-                        $('#temp3').html("correct previous");
-                        correct = correct + 1;
-                    }
-                    else
-                    {
-                        $('#temp3').html("incorrect previous");
-                        incorrect = incorrect + 1;
-                    }
-                }
-                if(testId == 6)
-                {
-                    $('#next').html("Score");
-                }
-            }
-
-
-            function nextTestCase(){
-                checkOutcome();
-                testId = testId + 1;
-                
-                //change image
-                pickRandomImage();
-
-                //before the result window is shown, the 8th test case appears and we don't want that
-                //so adding a litte delay
-                if (testId == 8)
-                {
-                    window.location.href = "result.html?correct=" + encodeURIComponent(correct);
-                }
-                else
-                {
-                    $('#testId').html(testId);
-
-                    //reset correctColor and selectedColor
-                    correctColor = null;
-                    selectedColor = null;
-
-                    const colors = ["RED", "ORANGE", "YELLOW", "GREEN", "BLUE", "INDIGO", "VIOLET", "PURPLE", "PINK", "SILVER", "GOLD", "BROWN", "GREY", "BLACK", "WHITE"];
-                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                    $("#randomColour").html(randomColor);
-                
-                    correctColor = randomColor;
-                }
-            }
-
-
-            $("#next").click(nextTestCase)
-
-            //change background color on click of btn class
-            $(".btn").click(function(){
-                $(".picture").css("background-color", this.id);
-                selectedColor = this.id;
-            });
-
-
-            //alert if someone tries to refresh
-            $(document.body).on("keydown", this, function (event) {
-                if (event.keyCode == 116) {
-                alert("All your progress will be lost. Are you sure you want to refresh.");
-            }
-
-});
-        
-        });
-
-    </script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="./index.js"></script>
 </head>
 
 <body>
-
+    <!--no-gutters to remove padding from rows and cols-->
     <div class = "row no-gutters">
 
         <div class = "col-md-6 no-gutters">
             <div class = "leftside">
-                <h2 style="font-size : 2.5vw;">&nbsp;&nbsp;&nbsp; Change background color to <span id = "randomColour" style = "color: brown;"></span> </h2>
-                <img id = "myImage" class="picture" src="http://pngimg.com/uploads/mario/mario_PNG53.png" style="background-color:#7d869c; height:90%; width:100%">
+                <h2><span id = "message">Let's start the </span><span id = "randomColour">COLOURS - QUIZ</span> </h2>
+                <img id = "myImage" class="picture" src="http://pngimg.com/uploads/mario/mario_PNG53.png">
             </div>
         </div>
 
         <div class = "col-md-5 no-gutters">
             <div class = "rightside">
+
+                <h3>Click below to change background</h3>
                 <!--Display colour pallate-->
-                <button class = "btn" id = "RED" style = "background-color: Red;"> </button>                 
-                <button class = "btn" id = "ORANGE" style = "background-color: Orange;"> </button>
-                <button class = "btn" id = "YELLOW" style = "background-color: Yellow;"> </button>
-                <button class = "btn" id = "GREEN" style = "background-color: Green;"> </button>
-                <button class = "btn" id = "WHITE" style = "background-color: white;"> </button>
-                <button class = "btn" id = "BLUE" style = "background-color: Blue;"> </button>
-                <button class = "btn" id = "INDIGO" style = "background-color: Indigo;"> </button>
-                <button class = "btn" id = "VIOLET" style = "background-color: violet;"> </button>
-                <button class = "btn" id = "PURPLE" style = "background-color: purple;"> </button>
-                <button class = "btn" id = "PINK" style = "background-color: pink;"> </button>
-                <button class = "btn" id = "SILVER" style = "background-color: silver;"> </button>
-                <button class = "btn" id = "GOLD" style = "background-color: gold;"> </button>
-                <button class = "btn" id = "BROWN" style = "background-color: brown;"> </button>
-                <button class = "btn" id = "GREY" style = "background-color: grey;"> </button>
-                <button class = "btn" id = "BLACK" style = "background-color: black;"> </button>
+                <button class = "btn" id = "RED"></button>                 
+                <button class = "btn" id = "ORANGE"></button>
+                <button class = "btn" id = "YELLOW"></button>
+                <button class = "btn" id = "GREEN"></button>
+                <button class = "btn" id = "WHITE"></button>
+                <button class = "btn" id = "BLUE"></button>
+                <button class = "btn" id = "INDIGO"></button>
+                <button class = "btn" id = "VIOLET"></button>
+                <button class = "btn" id = "PURPLE"></button>
+                <button class = "btn" id = "PINK"></button>
+                <button class = "btn" id = "SILVER"></button>
+                <button class = "btn" id = "GOLD"></button>
+                <button class = "btn" id = "BROWN"></button>
+                <button class = "btn" id = "GREY"></button>
+                <button class = "btn" id = "BLACK"></button>
             </div>
         </div>
 
         <div class = "col-md-1 no-gutters">
-            <h2 style="font-size : 2.5vw;">&nbsp;&nbsp;<span id = "testId"></span>/7</h2>
+            <h2>&nbsp;&nbsp;<span id = "testId"></span></h2>
             <div class = "nextside">
-                <button id = "next" style="font-size : 2vw;"> &nbsp;Start </button>
+                <button id = "next"> &nbsp;Start </button>
             </div> 
         </div>
 
     <div>
+
 </body>
 
 </html>
