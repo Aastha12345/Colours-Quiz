@@ -37,6 +37,15 @@
             transform: scale(1.1);
         }
 
+        #next
+        {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+
+        #next:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
 
         .leftside
         {
@@ -80,13 +89,23 @@
             var correctColor;
             var selectedColor;
 
-            //pick a random colour
+            //pick a random image
+            function pickRandomImage(){
+                var imageNames = ["captainAmerica", "chipAndDale", "donaldDuck", "frozen", "goofy", "iceAge", "lionKing", "mario", "minions", "mowgli",
+                                        "nightFury", "penguinsOfMadagascar", "smurf", "snoopy", "spongeBob", "tomAndJerry"];
+
+                var imageName = imageNames[Math.floor(Math.random() * imageNames.length)];
+                var imageName = "./images/" + imageName + ".png";
+                $("#myImage").attr("src", imageName); 
+                $("#myImage").css("background-color","#7d869c");
+            }
+
 
             function checkOutcome()
-            {
+            {                
                 if(testId == 0)
                 {
-                    $('#next').html("--->");
+                    $('#next').html("---->");
                 }
 
                 if (testId != 0)
@@ -104,32 +123,38 @@
                 }
                 if(testId == 6)
                 {
-                    $('#next').html("submit");
-                }
-                if (testId == 7)
-                {
-                    alert = "hello reached 7 you are about to be redirected"
-                    window.location.href = "result.html?correct=" + encodeURIComponent(correct);
+                    $('#next').html("Score");
                 }
             }
 
 
             function nextTestCase(){
                 checkOutcome();
-
                 testId = testId + 1;
-                $('#testId').html(testId);
+                
+                //change image
+                pickRandomImage();
 
-                //reset correctColor and selectedColor
-                correctColor = null;
-                selectedColor = null;
+                //before the result window is shown, the 8th test case appears and we don't want that
+                //so adding a litte delay
+                if (testId == 8)
+                {
+                    window.location.href = "result.html?correct=" + encodeURIComponent(correct);
+                }
+                else
+                {
+                    $('#testId').html(testId);
 
-                const colors = ["RED", "ORANGE", "YELLOW", "GREEN", "BLUE", "INDIGO", "VIOLET", "PURPLE", "PINK", "SILVER", "GOLD", "BROWN", "GREY", "BLACK", "WHITE"];
-                const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                $("#randomColour").html(randomColor);
-            
-                correctColor = randomColor;
+                    //reset correctColor and selectedColor
+                    correctColor = null;
+                    selectedColor = null;
 
+                    const colors = ["RED", "ORANGE", "YELLOW", "GREEN", "BLUE", "INDIGO", "VIOLET", "PURPLE", "PINK", "SILVER", "GOLD", "BROWN", "GREY", "BLACK", "WHITE"];
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    $("#randomColour").html(randomColor);
+                
+                    correctColor = randomColor;
+                }
             }
 
 
@@ -142,24 +167,13 @@
             });
 
 
-            //pick a random image
-            $("#next").click(function(){
-                var imageNames = ["captainAmerica", "chipAndDale", "donaldDuck", "frozen", "goofy", "iceAge", "lionKing", "mario", "minions", "mowgli",
-                                        "nightFury", "penguinsOfMadagascar", "smurf", "snoopy", "spongeBob", "tomAndJerry"];
-
-                var imageName = imageNames[Math.floor(Math.random() * imageNames.length)];
-                var imageName = "./images/" + imageName + ".png";
-                $("#myImage").attr("src", imageName); 
-                $("#myImage").css("background-color","#7d869c");
-            })
-
-
-
             //alert if someone tries to refresh
-            window.onbeforeunload = function() {
-                return "Data will be lost if you leave the page, are you sure?";
-            };
+            $(document.body).on("keydown", this, function (event) {
+                if (event.keyCode == 116) {
+                alert("All your progress will be lost. Are you sure you want to refresh.");
+            }
 
+});
         
         });
 
@@ -202,7 +216,7 @@
         <div class = "col-md-1 no-gutters">
             <h2 style="font-size : 2.5vw;">&nbsp;&nbsp;<span id = "testId"></span>/7</h2>
             <div class = "nextside">
-                <button id = "next" style="font-size : 2.5vw;"> Start </button>
+                <button id = "next" style="font-size : 2vw;"> &nbsp;Start </button>
             </div> 
         </div>
 
