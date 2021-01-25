@@ -3,88 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Result</title>
 
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <link rel= "stylesheet" type= "text/css" href= "./public/styles/result.css">
     
-    <style>
-        body{
-            background-color: bisque;
-        }
-
-
-        #centerPart{
-            position: absolute;
-            width: 70%;
-            height: 70%;
-            top: 20%;
-            left: 15%;
-        }
-
-    </style>
-
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript">
-
-    $(document).ready(function(){
-        
-        function createGraph() {
-
-            //get parameters from url
-            incomingURL = document.location.href;
-            const url = new URL(
-                incomingURL
-            );
-
-            correct = url.searchParams.get('correct'); 
-            incorrect = 7 - correct;
-
-            document.getElementById("test").innerHTML = correct + " / " + 7;
-
-            var chart = new CanvasJS.Chart("chartContainer", {
-                title:{
-                    text: ""              
-                },
-                data: [              
-                    {
-                        // Change type to "doughnut", "line", "splineArea", etc.
-                        type: "pie",
-                        dataPoints: [
-                            { label: "correct",  y: correct },
-                            { label: "incorrect", y: incorrect }
-                        ]
-                    }
-                ]
-            });
-            chart.render();
-        };
-
-        createGraph();
-    });
- 
-
-
-    </script>
-
-
-
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="./result.js"></script>    
 </head>
 
 <body>
-    <div class = "col-md-10">
-        <div class = "col-md-2">
-            <button id = "restart" style="font-size : 2.5vw; float: right;"> <a href = "./index.html"> X </a></button>
-        </div>
-        <h1 style="font-size : 3vw; text-align: center;">&nbsp;&nbsp;<u>RESULT</u></h1>
-        <h2 id = "test" style = "text-align: center;"></h2>
-        
+
+    <div>
+        <button id = "restart"> <a href = "./index.html"> X </a></button>
+        <h1>&nbsp;&nbsp;<u>RESULT</u></h1>
+        <h2 id = "test"></h2>
+       
         <div id = "centerPart">
-            <div id="chartContainer" style="height: 100%; width: 100%; border: 5px solid black;"></div>
+            <div id="chartContainer"></div>
         </div>
-    
     </div>
-
-
 
 </body>
 
