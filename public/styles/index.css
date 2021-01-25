@@ -1,0 +1,141 @@
+body {
+    background-color: bisque;
+}
+
+.leftside {
+    padding-left : 5%;
+    width : 100%;   
+    background-color: bisque;
+    text-align : center;
+}
+
+.rightside {
+    padding-top : 10%;
+    padding-left : 15%;
+    background-color: bisque;
+}
+
+.nextside {
+    padding-top: 40vh;
+    padding-left: 15%;
+}
+
+.btn {
+    height : 17%;
+    width : 20%;
+    padding : 3%;
+}
+
+.btn {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+    transform: scale(1.1);
+}
+
+#next {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    font-size : 2vw;
+}
+
+#next:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+h2 {
+    font-size : 2.5vw;
+}
+
+h3 {
+    font-size : 1.75vw;
+}
+
+#randomColour {
+    color: brown;
+}
+
+.picture
+{
+    background-color:#7d869c; 
+    height:90%; 
+    width:100%;
+}
+
+#RED {
+    background-color: red;
+}
+
+#ORANGE {
+    background-color: orange;
+}
+
+#YELLOW {
+    background-color: yellow;
+}
+
+#GREEN {
+    background-color: green;
+}
+
+#WHITE {
+    background-color: white;
+}
+
+#BLUE {
+    background-color: blue;
+}
+
+#INDIGO {
+    background-color: indigo;
+}
+
+#VIOLET {
+    background-color: violet;
+}
+
+#PURPLE {
+    background-color: purple;
+}
+
+#PINK {
+    background-color: pink;
+}
+
+#SILVER {
+    background-color: silver;
+}
+
+#GOLD {
+    background-color: gold;
+}
+
+#BROWN {
+    background-color: brown;
+}
+
+#GREY {
+    background-color: grey;
+}
+
+#BLACK {
+    background-color: black;
+}
+
+@media screen and (min-width: 768px)
+{
+    .leftside, .rightside
+    {
+        height : 100vh;
+    }
+}        
