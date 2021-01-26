@@ -13,19 +13,19 @@
 
 
 ## Demo
-|                  Entry Page                    |
-| -----------------------------------------------|
-| ![alt-text-1](./demo_images/entryPage.JPG)     | 
+|                  Entry Page                           |
+| ------------------------------------------------------|
+| ![alt-text-1](./public/demo_images/entryPage.JPG)     | 
 
 
-|           Testcase 1                               |               Testcase 2                                   |
-| ---------------------------------------------------|------------------------------------------------------------|
-| ![alt-text-1](./demo_images/testcase1.JPG)         | ![alt-text-2](./demo_images/testcase2.JPG)                 |
+|           Testcase 1                                      |               Testcase 2                                   |
+| ----------------------------------------------------------|------------------------------------------------------------|
+| ![alt-text-1](./public/demo_images/testcase1.JPG)         | ![alt-text-2](./public/demo_images/testcase2.JPG)          |
 
 
-|                  Output Page                   |
-| -----------------------------------------------|
-| ![alt-text-1](./demo_images/outputPage.JPG)    | 
+|                  Output Page                          |
+| ------------------------------------------------------|
+| ![alt-text-1](./public/demo_images/outputPage.JPG)    |
 
 
 <br>
